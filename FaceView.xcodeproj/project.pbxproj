@@ -13,6 +13,7 @@
 		7A75675F1E0D5ED80091A60A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A75675E1E0D5ED80091A60A /* Assets.xcassets */; };
 		7A7567621E0D5ED80091A60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7567601E0D5ED80091A60A /* LaunchScreen.storyboard */; };
 		7A75676B1E0D5FC20091A60A /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A75676A1E0D5FC20091A60A /* FaceView.swift */; };
+		7AD079C61E12B46300CCE3E7 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD079C51E12B46300CCE3E7 /* ChangeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7A7567611E0D5ED80091A60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A7567631E0D5ED80091A60A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A75676A1E0D5FC20091A60A /* FaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		7AD079C51E12B46300CCE3E7 /* ChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				7A7567591E0D5ED80091A60A /* FaceViewController.swift */,
 				7A75676A1E0D5FC20091A60A /* FaceView.swift */,
+				7AD079C51E12B46300CCE3E7 /* ChangeViewController.swift */,
 				7A75675B1E0D5ED80091A60A /* Main.storyboard */,
 				7A7567691E0D5EF60091A60A /* Supporting Files */,
 			);
@@ -150,6 +153,7 @@
 			files = (
 				7A75675A1E0D5ED80091A60A /* FaceViewController.swift in Sources */,
 				7A7567581E0D5ED80091A60A /* AppDelegate.swift in Sources */,
+				7AD079C61E12B46300CCE3E7 /* ChangeViewController.swift in Sources */,
 				7A75676B1E0D5FC20091A60A /* FaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,12 @@
 import UIKit
 
 class FaceViewController: UIViewController {
+    var mouthCurvature = 0.0 {
+        didSet {
+            updateUI()
+        }
+    }
+    
     @IBOutlet weak var UIFaceView: FaceView! {
         didSet {
             UIFaceView.addGestureRecognizer(UIPinchGestureRecognizer(target: UIFaceView, action: #selector(FaceView.changeScale(recognizer:))))
@@ -33,6 +39,7 @@ class FaceViewController: UIViewController {
             
             UIFaceView.addGestureRecognizer(tapGestureRecognizer)
             
+            updateUI()
         }
     }
     
@@ -57,14 +64,14 @@ class FaceViewController: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
-            self.UIFaceView.mouthCurvature = 1;
-        } else {
-            self.UIFaceView.mouthCurvature = -0.5;
+    func updateUI() {
+        if UIFaceView != nil {
+            UIFaceView.mouthCurvature = mouthCurvature
         }
-        
-        self.UIFaceView.drawEntireSmileyFace()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        updateUI()
     }
 }
 
