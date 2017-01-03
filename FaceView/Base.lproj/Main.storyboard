@@ -20,7 +20,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezw-Uu-Giy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-862" y="9"/>
+            <point key="canvasLocation" x="-812" y="-226"/>
         </scene>
         <!--Change-->
         <scene sceneID="lgp-2M-ig0">
@@ -74,12 +74,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Guh-gB-tJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="-281"/>
+            <point key="canvasLocation" x="975" y="-226"/>
         </scene>
-        <!--Face View Controller-->
+        <!--Blinking Face View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FaceViewController" customModule="FaceView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BlinkingFaceViewController" customModule="FaceView" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -117,12 +117,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="nub-hv-to6"/>
                     <connections>
-                        <outlet property="UIFaceView" destination="wvl-DU-Qpl" id="uTi-MR-GSp"/>
+                        <outlet property="UIFaceView" destination="wvl-DU-Qpl" id="ZKq-Fq-uDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="914" y="618"/>
+            <point key="canvasLocation" x="975" y="714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QMN-2q-DkO">
@@ -158,10 +158,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEm-0Z-XiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-65" y="696"/>
+            <point key="canvasLocation" x="63" y="714"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g9y-zX-NQd"/>
+        <segue reference="G57-dg-MSr"/>
     </inferredMetricsTieBreakers>
 </document>

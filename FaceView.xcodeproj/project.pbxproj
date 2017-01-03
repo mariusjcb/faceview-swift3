@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A133A471E1BC6BB006AB537 /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A133A461E1BC6BB006AB537 /* EyeView.swift */; };
+		7A5B49E61E1948A000E68C7B /* BlinkingFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5B49E51E1948A000E68C7B /* BlinkingFaceViewController.swift */; };
 		7A7567581E0D5ED80091A60A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7567571E0D5ED80091A60A /* AppDelegate.swift */; };
 		7A75675A1E0D5ED80091A60A /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7567591E0D5ED80091A60A /* FaceViewController.swift */; };
 		7A75675D1E0D5ED80091A60A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A75675B1E0D5ED80091A60A /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A133A461E1BC6BB006AB537 /* EyeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
+		7A5B49E51E1948A000E68C7B /* BlinkingFaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlinkingFaceViewController.swift; sourceTree = "<group>"; };
 		7A7567541E0D5ED80091A60A /* FaceView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7567571E0D5ED80091A60A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A7567591E0D5ED80091A60A /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
@@ -60,8 +64,10 @@
 			children = (
 				7A7567591E0D5ED80091A60A /* FaceViewController.swift */,
 				7A75676A1E0D5FC20091A60A /* FaceView.swift */,
+				7A133A461E1BC6BB006AB537 /* EyeView.swift */,
 				7AD079C51E12B46300CCE3E7 /* ChangeViewController.swift */,
 				7A75675B1E0D5ED80091A60A /* Main.storyboard */,
+				7A5B49E51E1948A000E68C7B /* BlinkingFaceViewController.swift */,
 				7A7567691E0D5EF60091A60A /* Supporting Files */,
 			);
 			path = FaceView;
@@ -155,6 +161,8 @@
 				7A7567581E0D5ED80091A60A /* AppDelegate.swift in Sources */,
 				7AD079C61E12B46300CCE3E7 /* ChangeViewController.swift in Sources */,
 				7A75676B1E0D5FC20091A60A /* FaceView.swift in Sources */,
+				7A133A471E1BC6BB006AB537 /* EyeView.swift in Sources */,
+				7A5B49E61E1948A000E68C7B /* BlinkingFaceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

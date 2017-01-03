@@ -35,7 +35,7 @@ class FaceViewController: UIViewController {
             
             // tap gesture
             
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FaceViewController.toggleEyes(recognizer:)))
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FaceViewController.headSake(recognizer:)))
             
             UIFaceView.addGestureRecognizer(tapGestureRecognizer)
             
@@ -53,15 +53,37 @@ class FaceViewController: UIViewController {
         UIFaceView.mouthCurvature = UIFaceView.mouthCurvature - 0.5
     }
     
-    func toggleEyes(recognizer: UITapGestureRecognizer)
+    private struct Animation {
+        static let shakeAngle = CGFloat(M_PI/6)
+        static let shakeDuration = 0.5
+    }
+    
+    func headSake(recognizer: UITapGestureRecognizer)
     {
-        if recognizer.state == .ended {
-            if UIFaceView.eyesOpened {
-                UIFaceView.eyesOpened = false
-            } else {
-                UIFaceView.eyesOpened = true
+        UIView.animate(
+            withDuration: Animation.shakeDuration,
+            animations: { [weak weakSelf = self] in
+                weakSelf?.UIFaceView.transform = (weakSelf?.UIFaceView.transform.rotated(by: Animation.shakeAngle))!
+            }, completion: { (finished) in
+                if finished {
+                    UIView.animate(
+                        withDuration: Animation.shakeDuration,
+                        animations: { [weak weakSelf = self] in
+                            weakSelf?.UIFaceView.transform = (weakSelf?.UIFaceView.transform.rotated(by: -Animation.shakeAngle*2))!
+                        }, completion: { (finished) in
+                            if finished {
+                                UIView.animate(
+                                    withDuration: Animation.shakeDuration,
+                                    animations: { [weak weakSelf = self] in
+                                        weakSelf?.UIFaceView.transform = (weakSelf?.UIFaceView.transform.rotated(by: Animation.shakeAngle))!
+                                    }
+                                )
+                            }
+                        }
+                    )
+                }
             }
-        }
+        )
     }
     
     func updateUI() {

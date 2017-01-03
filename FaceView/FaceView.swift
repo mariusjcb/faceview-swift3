@@ -9,10 +9,33 @@
 import UIKit
 
 @IBDesignable class FaceView: UIView {
-    @IBInspectable private var scale: CGFloat = 0.80 { didSet { setNeedsDisplay() } }
-    @IBInspectable public var eyesOpened: Bool = true { didSet { setNeedsDisplay() } }
-    @IBInspectable public var lineWidth: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
-    @IBInspectable public var lineColor: UIColor = UIColor.blue { didSet { setNeedsDisplay() } }
+    @IBInspectable private var scale: CGFloat = 0.80 {
+            didSet
+            {
+                setNeedsDisplay()
+                self.layoutSubviews()
+            }
+    }
+    @IBInspectable public var eyesOpened: Bool = true {
+        didSet {
+            leftEye.eyeOpen = eyesOpened
+            rightEye.eyeOpen = eyesOpened
+        }
+    }
+    @IBInspectable public var lineWidth: CGFloat = 1.0 {
+        didSet {
+            setNeedsDisplay()
+            leftEye.lineWidth = lineWidth
+            rightEye.lineWidth = lineWidth
+        }
+    }
+    @IBInspectable public var lineColor: UIColor = UIColor.blue {
+        didSet {
+            setNeedsDisplay()
+            leftEye.color = lineColor
+            rightEye.color = lineColor
+        }
+    }
     @IBInspectable public var mouthCurvature: Double = 1.0 {
         didSet {
             if mouthCurvature < -1 || mouthCurvature > 1 {
@@ -22,8 +45,6 @@ import UIKit
             }
         }
     }
-    
-    private var blinkTimer: Timer? = nil
     
     func changeScale(recognizer: UIPinchGestureRecognizer) {
         print(recognizer.state)
@@ -84,44 +105,43 @@ import UIKit
         return eyeCenter
     }
     
-    private func pathForEye(_ eye: Eye) -> UIBezierPath {
-        let eyeRadius = faceRadius / Ratios.EyeRadius
-        let eyeCenter = getEyeCenter(eye)
+    private lazy var leftEye: EyeView = self.createEye()
+    private lazy var rightEye: EyeView = self.createEye()
+    
+    private func createEye() -> EyeView {
+        let eye = EyeView()
         
-        if eyesOpened {
-            return pathForCircleCenteredAtPoint(eyeCenter, widthRadius: eyeRadius)
-        } else {
-            let bezierPath = UIBezierPath()
-            
-            bezierPath.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
-            bezierPath.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
-            bezierPath.lineWidth = lineWidth
-            
-            return bezierPath
-        }
-    }
-    
-    private func blinkEyes() {
-        if eyesOpened {
-            eyesOpened = false
-        } else {
-            eyesOpened = true
-        }
-    }
-    
-    public func blinkEyesCaller() {
-        setBlinkTimer()
-        blinkEyes()
+        eye.isOpaque = false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
-            self.blinkEyes()
-        })
+        eye.color = lineColor
+        eye.lineWidth = lineWidth
+        
+        self.addSubview(eye)
+        return eye
     }
     
-    private func setBlinkTimer() {
-        blinkTimer?.invalidate()
-        blinkTimer = Timer.scheduledTimer(timeInterval: TimeInterval(Int(arc4random_uniform(4) + 2)), target: self, selector: #selector(blinkEyesCaller), userInfo: nil, repeats: true)
+    private func position(eye: EyeView, to center: CGPoint) {
+        let size = faceRadius / Ratios.EyeRadius * 2
+        eye.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size))
+        eye.center = center
     }
+    
+//    private func pathForEye(_ eye: Eye) -> UIBezierPath {
+//        let eyeRadius = faceRadius / Ratios.EyeRadius
+//        let eyeCenter = getEyeCenter(eye)
+//        
+//        if eyesOpened {
+//            return pathForCircleCenteredAtPoint(eyeCenter, widthRadius: eyeRadius)
+//        } else {
+//            let bezierPath = UIBezierPath()
+//            
+//            bezierPath.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
+//            bezierPath.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
+//            bezierPath.lineWidth = lineWidth
+//            
+//            return bezierPath
+//        }
+//    }
     
     private func pathForMouth() -> UIBezierPath {
         let mouthWidth = faceRadius / Ratios.MouthWidth
@@ -154,16 +174,19 @@ import UIKit
         lineColor.set() // old version: UIColor.blueColor().set()
         
         pathForCircleCenteredAtPoint(faceCenter, widthRadius: faceRadius).stroke()
-        pathForEye(.Left).stroke()
-        pathForEye(.Right).stroke()
+//        pathForEye(.Left).stroke()
+//        pathForEye(.Right).stroke()
         
         pathForMouth().stroke()
         
         self.setNeedsDisplay()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        if !(blinkTimer != nil) {
-            setBlinkTimer()
-        }
+        position(eye: leftEye, to: getEyeCenter(.Left))
+        position(eye: rightEye, to: getEyeCenter(.Right))
     }
     
     override func draw(_ rect: CGRect) { // old drawRect
